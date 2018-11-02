@@ -66,7 +66,7 @@ public class ConversationRecyclerAdapter extends RecyclerView.Adapter<Conversati
             holder.tvName.setTextSize(10);
             holder.tvName.setText(chatMessage.getMessageDate());
             holder.tvDate.setTextSize(15);
-            holder.tvDate.setText(chatMessage.getNameAuthor());
+            holder.tvDate.setText("Vous");
 
             //New background style
             Drawable drawableBackground = ContextCompat.getDrawable(mContext, R.drawable.message_box_user);

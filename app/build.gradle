@@ -30,4 +30,5 @@ dependencies {
     implementation 'ai.api:libai:1.6.12'
     implementation 'com.android.support:recyclerview-v7:26.1.0'
     implementation 'com.google.firebase:firebase-database:16.0.1'
+    implementation 'com.google.firebase:firebase-auth:16.0.1'
 }

@@ -13,6 +13,8 @@ public class User {
         this.photo = photo;
     }
 
+    public User(){}
+
     public String getStatus() {
         return status;
     }

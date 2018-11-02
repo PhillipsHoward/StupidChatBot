@@ -84,7 +84,9 @@
             android:hint="Répondez ici"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/send_button"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:inputType="text"
+            android:imeOptions="actionDone"/>
 
         <ImageButton
             android:id="@+id/send_button"
