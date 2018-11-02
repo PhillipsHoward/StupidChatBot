@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "874984156285",
+    "firebase_url": "https://retardedbot-2e9a6.firebaseio.com",
+    "project_id": "retardedbot-2e9a6",
+    "storage_bucket": "retardedbot-2e9a6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874984156285:android:64a30834b905a1f3",
+        "android_client_info": {
+          "package_name": "fr.wcs.retardedbot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "874984156285-16n5re2lbhn5e9r1le6jh0sf1o2uq6h1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "fr.wcs.retardedbot",
+            "certificate_hash": "bb24d3e8da7155fcd6c8116e409982b7c19f0665"
+          }
+        },
+        {
+          "client_id": "874984156285-33jv7i6m48g9ul00h13m0i556pmv3a1a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7O7VCfx0y4ZPF4awODjS8tLEPSNiuuGA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "874984156285-33jv7i6m48g9ul00h13m0i556pmv3a1a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,6 @@
 package fr.wcs.retardedbot;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class ChatMessage {
@@ -10,14 +9,14 @@ public class ChatMessage {
     private String IdAuthor;
     private String NameAuthor;
     private String photoAuthor;
-    private String chatDate;
+    private String messageDate;
 
     public ChatMessage(String textMessage, String idAuthor, String nameAuthor, String photoAuthor, Date brutChatDate) {
         this.textMessage = textMessage;
         IdAuthor = idAuthor;
         NameAuthor = nameAuthor;
         this.photoAuthor = photoAuthor;
-        this.chatDate = buildAFormattedDate(brutChatDate);
+        this.messageDate = buildAFormattedDate(brutChatDate);
     }
 
     public String getTextMessage() {
@@ -52,16 +51,16 @@ public class ChatMessage {
         this.photoAuthor = photoAuthor;
     }
 
-    public String getChatDate() {
-        return chatDate;
+    public String getMessageDate() {
+        return messageDate;
     }
 
-    public void setChatDate(Date chatDate) {
-        this.chatDate = buildAFormattedDate(chatDate);
+    public void setMessageDate(Date messageDate) {
+        this.messageDate = buildAFormattedDate(messageDate);
     }
 
     public String buildAFormattedDate(Date chatDate) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd"); //TODO vérifier ce binz
         SimpleDateFormat hourFormat = new SimpleDateFormat("kk:mm");
         String formattedDate = dateFormat.format(chatDate);
         String formattedHour = hourFormat.format(chatDate);
