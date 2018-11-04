@@ -1,11 +1,16 @@
 package fr.wcs.retardedbot;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
 public class User {
 
-    private String idUser;
-    private String name;
-    private String photo;
-    private String status = "Hello there!";
+    protected String idUser;
+    protected String name;
+    protected String photo;
+    protected String status = "Hello there!";
 
     public User(String idUser, String name, String photo) {
         this.idUser = idUser;
@@ -45,5 +50,20 @@ public class User {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public ChatMessage sendNewMessage(String textMessage, int newMessageIndex) {
+        Date dateBrut = Calendar.getInstance().getTime();
+        String date = buildAFormattedDate(dateBrut);
+        final ChatMessage messageToSend = new ChatMessage(textMessage, idUser, name, photo, date, newMessageIndex);
+        return messageToSend;
+    }
+
+    public String buildAFormattedDate(Date chatDate) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd"); //TODO vérifier ce binz
+        SimpleDateFormat hourFormat = new SimpleDateFormat("kk:mm");
+        String formattedDate = dateFormat.format(chatDate);
+        String formattedHour = hourFormat.format(chatDate);
+        return "Envoyé le " + formattedDate +" à " + formattedHour;
     }
 }

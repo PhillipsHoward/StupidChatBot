@@ -22,6 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
 public class SignUpActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
@@ -111,7 +113,8 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Toast.makeText(SignUpActivity.this, "Inscription réussie", Toast.LENGTH_SHORT).show();
-                launchNextActivity(user);
+                Singleton.getInstance().setUser(user);
+                createNewConversation(user);
             }
 
             @Override
@@ -121,9 +124,37 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
-    public void launchNextActivity(User user) {
+    public void createNewConversation(User user) {
+
+        Singleton singleton = Singleton.getInstance();
+        singleton.initBot();
+        ArrayList<ChatMessage> chatMessages = new ArrayList<>();
+        ConversationModel newConversation = new ConversationModel(user, singleton.getBot(), chatMessages, singleton.getBot().getIdUser()+ "_WITH_" + singleton.getUser().getIdUser());
+
+        //Put a new Conversation in Firebase
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference conversationsReference = database.getReference("conversations");
+        DatabaseReference currentConversationRef = conversationsReference.child(newConversation.getConversationId());
+        currentConversationRef.setValue(newConversation);
+
+        //When new Conversation is correctly put in database, launch next event
+        currentConversationRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //TODO delete ce toast
+                Toast.makeText(SignUpActivity.this, "Nouvelle conversation créee", Toast.LENGTH_SHORT).show();
+                launchNextActivity();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                //TODO Cas de foirage. Ecrire un toast et refresh la page
+            }
+        });
+    }
+
+    public void launchNextActivity() {
         if (mAuth.getCurrentUser() != null) {
-            Singleton.getInstance().setUser(user);
             Intent intent = new Intent(SignUpActivity.this, ConversationActivity.class);
             startActivity(intent);
         }

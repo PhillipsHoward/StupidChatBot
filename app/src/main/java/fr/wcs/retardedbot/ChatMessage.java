@@ -10,13 +10,25 @@ public class ChatMessage {
     private String NameAuthor;
     private String photoAuthor;
     private String messageDate;
+    private int orderInConversation;
 
-    public ChatMessage(String textMessage, String idAuthor, String nameAuthor, String photoAuthor, Date brutChatDate) {
+    public ChatMessage(String textMessage, String idAuthor, String nameAuthor, String photoAuthor, String date, int orderInConversation) {
         this.textMessage = textMessage;
         IdAuthor = idAuthor;
         NameAuthor = nameAuthor;
         this.photoAuthor = photoAuthor;
-        this.messageDate = buildAFormattedDate(brutChatDate);
+        this.messageDate = date;
+        this.orderInConversation = orderInConversation;
+    }
+
+    public ChatMessage(){};
+
+    public int getOrderInConversation() {
+        return orderInConversation;
+    }
+
+    public void setOrderInConversation(int orderInConversation) {
+        this.orderInConversation = orderInConversation;
     }
 
     public String getTextMessage() {
@@ -55,16 +67,7 @@ public class ChatMessage {
         return messageDate;
     }
 
-    public void setMessageDate(Date messageDate) {
-        this.messageDate = buildAFormattedDate(messageDate);
+    public void setMessageDate(String messageDate) {
+        this.messageDate = messageDate;
     }
-
-    public String buildAFormattedDate(Date chatDate) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM-dd"); //TODO vérifier ce binz
-        SimpleDateFormat hourFormat = new SimpleDateFormat("kk:mm");
-        String formattedDate = dateFormat.format(chatDate);
-        String formattedHour = hourFormat.format(chatDate);
-        return "Envoyé le " + formattedDate +" à " + formattedHour;
-    }
-
 }

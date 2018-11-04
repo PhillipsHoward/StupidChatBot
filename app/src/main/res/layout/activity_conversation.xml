@@ -28,7 +28,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@mipmap/default_photo_layer" />
+            app:srcCompat="@mipmap/retarded_profile_round" />
 
         <TextView
             android:id="@+id/interlocutor_name"
@@ -56,8 +56,6 @@
             app:layout_constraintTop_toBottomOf="@+id/interlocutor_name" />
 
     </android.support.constraint.ConstraintLayout>
-
-
 
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"

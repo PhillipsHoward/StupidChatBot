@@ -1,5 +1,6 @@
 package fr.wcs.retardedbot;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.widget.Toast;
 
@@ -13,18 +14,14 @@ class Singleton {
 
     private static final Singleton ourInstance = new Singleton();
 
-    User user;
-    User bot;
+    private User user;
+    private ChatBot bot;
 
     static Singleton getInstance() {
         return ourInstance;
     }
 
-    private Singleton() {
-        String uriImage = "https://img.fireden.net/v/image/1506/78/1506786636491.png";
-        bot = new User("ID_BOT", "Retarded bot", uriImage);
-        bot.setStatus("Cil-vous-plaie, venaient me parlé :-( :-(");
-    }
+    private Singleton() { }
 
     public User getUser() {
         return user;
@@ -34,11 +31,11 @@ class Singleton {
         this.user = user;
     }
 
-    public User getBot() {
+    public ChatBot getBot() {
         return bot;
     }
 
-    public void setBot(User bot) {
+    public void setBot(ChatBot bot) {
         this.bot = bot;
     }
 
@@ -70,6 +67,12 @@ class Singleton {
             //TODO initUser impossible car l'ID fournie n'est pas correcte
         }
 
+    }
+
+    public void initBot() {
+        String uriImage = "https://img.fireden.net/v/image/1506/78/1506786636491.png";
+        this.bot = new ChatBot("ID_BOT", "Retarded bot", uriImage);
+        bot.setStatus("S'il-vous-plaie, venaient me parlé :-( :-(");
     }
 
 }

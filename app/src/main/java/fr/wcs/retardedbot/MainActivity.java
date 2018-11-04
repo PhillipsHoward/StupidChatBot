@@ -103,11 +103,12 @@ public class MainActivity extends AppCompatActivity {
     public void initializeUserFromFirebaseDatas(FirebaseUser user) {
 
         if(user != null) {
-            Singleton singleton = Singleton.getInstance();
+            final Singleton singleton = Singleton.getInstance();
             singleton.initUser(user.getUid(), new FirebaseListener() {
                 @Override
                 public void onSuccess(Object result) {
                     launchActivity(ConversationActivity.class);
+                    singleton.initBot();
                 }
                 @Override
                 public void onError(String error) {
