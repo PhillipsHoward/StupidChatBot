@@ -3,9 +3,11 @@ package fr.wcs.retardedbot;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 import ai.api.AIDataService;
 import ai.api.AIServiceException;
@@ -23,7 +25,6 @@ public class ChatBot extends User {
     private AIRequest aiRequest;
     private Context context;
     private final static String BOT_KEY = "66f25c46933843698072745a4393b981";
-    private final static String DEFAULT_RESPONSE = "J'ai pas comprendu ta phrase. Stp répètes :-(";
     private ChatMessage messageFromBot = null;
 
     public ChatBot(String idUser, String name, String photo) {
@@ -49,6 +50,22 @@ public class ChatBot extends User {
 
     public void setMessageFromBot(ChatMessage messageFromBot) {
         this.messageFromBot = messageFromBot;
+    }
+
+    public String generateRandomDefaultResponse() {
+        String result = "";
+
+        ArrayList<String> defaultResponses = new ArrayList<>();
+        defaultResponses.add("Gne?");
+        defaultResponses.add("J'ai pas compris ta phrase. Stp redis-le en plus simple :-(");
+        defaultResponses.add("Toi-même, d'abord.");
+        defaultResponses.add("Je comprend rien...");
+        defaultResponses.add("Vous parlez avec des mots trop compliqués pour moi :(");
+
+        Random random = new Random();
+        int index = random.nextInt(defaultResponses.size()-1) + 1 - 0;
+
+        return defaultResponses.get(index);
     }
 
     public void clearMessageToSend() {
@@ -82,7 +99,7 @@ public class ChatBot extends User {
                         Result result = response.getResult();
                         String reply = result.getFulfillment().getSpeech();
                         if(reply.equals("")) {
-                            reply = DEFAULT_RESPONSE;
+                            reply = generateRandomDefaultResponse();
                         }
                         Date dateBrut = Calendar.getInstance().getTime();
                         String date = buildAFormattedDate(dateBrut);

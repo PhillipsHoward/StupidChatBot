@@ -19,12 +19,12 @@ import java.util.Date;
 
 public class ConversationModel {
 
-    User user;
-    ChatBot bot;
-    ArrayList<ChatMessage> chatMessages;
-    String conversationId;
-    ConversationRecyclerAdapter adapter;
-    RecyclerView mRecyclerView;
+    private User user;
+    private ChatBot bot;
+    private ArrayList<ChatMessage> chatMessages;
+    private String conversationId;
+    private ConversationRecyclerAdapter adapter;
+    private RecyclerView mRecyclerView;
 
     public ConversationModel(User user, ChatBot botUser, ArrayList<ChatMessage> chatMessages, String conversationId) {
         this.user = user;

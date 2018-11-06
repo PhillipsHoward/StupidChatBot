@@ -50,9 +50,10 @@ public class ConversationActivity extends AppCompatActivity {
         //TODO Mise à jour de la photo de profil en fonction de l'uri du bot. Voir. Glide.
         TextView mTopStatus = findViewById(R.id.interlocutor_status);
         TextView mTopName = findViewById(R.id.interlocutor_name);
+        String textStatus = "\""+mSingleton.getBot().getStatus()+"\"";
 
         mTopName.setText(mSingleton.getBot().getName());
-        mTopStatus.setText(mSingleton.getBot().getStatus());
+        mTopStatus.setText(textStatus);
     }
 
     private void setUpUIChatroom(RecyclerView listMessages, ImageButton sendButton, EditText inputText) {
